@@ -19,10 +19,22 @@ namespace ThAmCo.Events.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index([Bind("Surname,FirstName")] Customer customer)
+        public async Task<IActionResult> Index()
         {
-            ViewData["FullName"] = customer.FirstName + " " + customer.Surname;
-            return View(await _context.Customers.ToListAsync());
+            var customerDb = _context.Customers;
+            var customers = await customerDb.ToListAsync();
+
+            List<Models.CustomerIndexViewModel> customerIndex = new List<Models.CustomerIndexViewModel>();
+            foreach (Customer e in customers)
+            {
+                Models.CustomerIndexViewModel customerViewModel = new Models.CustomerIndexViewModel();
+                customerViewModel.Id = e.Id;
+                customerViewModel.FullName = e.FirstName + " " + e.Surname;
+                customerViewModel.Email = e.Email;
+                customerIndex.Add(customerViewModel);
+            }
+
+            return View(customerIndex);
         }
 
         // GET: Customers/Details/5
@@ -39,12 +51,11 @@ namespace ThAmCo.Events.Controllers
                 FirstName = c.FirstName,
                 Surname = c.Surname,
                 Email = c.Email,
+                FullName = c.FirstName + " " + c.Surname,
                 Events = _context.Guests.Where(g => g.CustomerId == c.Id).Select(e => new Event
                 {
-                    Id = e.Event.Id,
                     Date = e.Event.Date,
                     Title = e.Event.Title,
-                    TypeId = e.Event.TypeId
                 })
             }).FirstOrDefaultAsync(m => m.Id == id);
 
@@ -53,7 +64,6 @@ namespace ThAmCo.Events.Controllers
                 return NotFound();
             }
 
-            ViewData["FullName"] = customer.FirstName + " " + customer.Surname;
             return View(customer);
         }
 
