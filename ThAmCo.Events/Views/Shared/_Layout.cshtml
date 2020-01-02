@@ -33,6 +33,8 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @*Link to customers index page*@
+                    <li><a asp-area="" asp-controller="Customers" asp-action="index">Customers</a></li>
                 </ul>
             </div>
         </div>
@@ -44,6 +46,7 @@
         @RenderBody()
         <hr />
         <footer>
+            @*Gets the current year*@
             <p>&copy; @DateTime.Now.Year - ThAmCo.Events</p>
         </footer>
     </div>
