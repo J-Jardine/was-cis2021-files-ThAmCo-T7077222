@@ -85,7 +85,7 @@ namespace ThAmCo.Events.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Date,Duration,TypeId")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Duration")] Models.EditEventViewModel @event)
         {
             if (id != @event.Id)
             {
@@ -96,7 +96,10 @@ namespace ThAmCo.Events.Controllers
             {
                 try
                 {
-                    _context.Update(@event);
+                    //Setting the variables to the information that is in the database
+                    var editEvent = await _context.Events.FindAsync(id);
+                    editEvent.Title = @event.Title;
+                    editEvent.Duration = @event.Duration;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
