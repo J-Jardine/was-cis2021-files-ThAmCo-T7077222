@@ -54,7 +54,7 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
                 @*Link to add guest to the event*@
                 <a asp-controller="GuestBookings" asp-action="Create" asp-route-EventId="@item.Id">Add Guest</a>  |
-                <a asp-controller="GuestBookings" asp-action="Index" asp-route-EventId="@item.Id">Guest List</a>  |
+                <a asp-controller="GuestBookings" asp-action="Index" asp-route-EventId="@item.Id">Guest List</a>
             </td>
         </tr>
 }

@@ -19,8 +19,9 @@ namespace ThAmCo.Events.Controllers
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([Bind("Surname,FirstName")] Customer customer)
         {
+            ViewData["FullName"] = customer.FirstName + " " + customer.Surname;
             return View(await _context.Customers.ToListAsync());
         }
 
@@ -32,13 +33,27 @@ namespace ThAmCo.Events.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var customer = await _context.Customers.Select(c => new Models.CustomerDetailsViewModel
+            {
+                Id = c.Id,
+                FirstName = c.FirstName,
+                Surname = c.Surname,
+                Email = c.Email,
+                Events = _context.Guests.Where(g => g.CustomerId == c.Id).Select(e => new Event
+                {
+                    Id = e.Event.Id,
+                    Date = e.Event.Date,
+                    Title = e.Event.Title,
+                    TypeId = e.Event.TypeId
+                })
+            }).FirstOrDefaultAsync(m => m.Id == id);
+
             if (customer == null)
             {
                 return NotFound();
             }
 
+            ViewData["FullName"] = customer.FirstName + " " + customer.Surname;
             return View(customer);
         }
 
