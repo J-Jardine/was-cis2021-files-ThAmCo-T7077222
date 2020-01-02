@@ -19,9 +19,15 @@ namespace ThAmCo.Events.Controllers
         }
 
         // GET: GuestBookings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery]int? EventId)
         {
-            var eventsDbContext = _context.Guests.Include(g => g.Customer).Include(g => g.Event);
+            var eventsDbContext = _context.Guests.Include(g => g.Customer).Include(g => g.Event).Where(g => g.EventId == EventId);
+            var currentEvent = _context.Events.Find(EventId);
+            if (currentEvent == null)
+            {
+                return BadRequest();
+            }
+            ViewData["Title"] = currentEvent.Title;
             return View(await eventsDbContext.ToListAsync());
         }
 

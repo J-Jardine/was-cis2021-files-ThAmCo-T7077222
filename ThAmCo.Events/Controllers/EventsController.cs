@@ -21,7 +21,22 @@ namespace ThAmCo.Events.Controllers
         // GET: Events
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Events.ToListAsync());
+            var eventDb = _context.Events;
+            var events = await eventDb.ToListAsync();
+
+            List<Models.EventIndexViewModel> eventIndex = new List<Models.EventIndexViewModel>();
+            foreach (Event e in events) 
+            {
+                Models.EventIndexViewModel eventViewModel = new Models.EventIndexViewModel();
+                eventViewModel.Date = e.Date;
+                eventViewModel.Duration = e.Duration;
+                eventViewModel.Id = e.Id;
+                eventViewModel.Title = e.Title;
+                eventViewModel.GuestCount = _context.Guests.Where(g => g.EventId == e.Id).Count();
+                eventIndex.Add(eventViewModel);
+            }
+
+            return View(eventIndex);
         }
 
         // GET: Events/Details/5
