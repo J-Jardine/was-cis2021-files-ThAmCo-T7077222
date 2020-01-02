@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using ThAmCo.Events.Data;
 
 namespace ThAmCo.Events.Data
 {
@@ -9,6 +10,9 @@ namespace ThAmCo.Events.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<GuestBooking> Guests { get; set; }
+        public DbSet<Staff> Staff { get; set; }
+        public DbSet<Staffing> Staffing { get; set; }
+
 
         private IHostingEnvironment HostEnv { get; }
 
@@ -46,6 +50,14 @@ namespace ThAmCo.Events.Data
                    .Property(e => e.TypeId)
                    .IsFixedLength();
 
+            builder.Entity<Staff>()
+                .HasMany(c => c.Staffings)
+                .WithOne(b => b.Staff)
+                .HasForeignKey(b => b.StaffId);
+
+            builder.Entity<Staffing>()
+                .HasKey(s => new { s.StaffId, s.EventId });
+
             // seed data for debug / development testing
             if (HostEnv != null && HostEnv.IsDevelopment())
             {
@@ -65,6 +77,28 @@ namespace ThAmCo.Events.Data
                     new GuestBooking { CustomerId = 2, EventId = 1, Attended = false },
                     new GuestBooking { CustomerId = 1, EventId = 2, Attended = false },
                     new GuestBooking { CustomerId = 3, EventId = 2, Attended = false }
+                );
+
+                builder.Entity<Staff>().HasData(
+                    new Staff { Id = 1, Surname = "Bush", FirstName = "Florence" },
+                    new Staff { Id = 2, Surname = "Jardine", FirstName = "Jacob" },
+                    new Staff { Id = 3, Surname = "Lawrence", FirstName = "Anastasia" },
+                    new Staff { Id = 4, Surname = "Adams", FirstName = "Ewan" },
+                    new Staff { Id = 5, Surname = "Chapman", FirstName = "Esmay" },
+                    new Staff { Id = 6, Surname = "Ferguson", FirstName = "Max" },
+                    new Staff { Id = 7, Surname = "Banks", FirstName = "Isla" },
+                    new Staff { Id = 8, Surname = "Watson", FirstName = "Felix" }
+                );
+
+                builder.Entity<Staffing>().HasData(
+                    new Staffing { StaffId = 1, EventId = 1 },
+                    new Staffing { StaffId = 2, EventId = 2 },
+                    new Staffing { StaffId = 3, EventId = 1 },
+                    new Staffing { StaffId = 4, EventId = 2 },
+                    new Staffing { StaffId = 5, EventId = 1 },
+                    new Staffing { StaffId = 6, EventId = 2 },
+                    new Staffing { StaffId = 7, EventId = 1 },
+                    new Staffing { StaffId = 8, EventId = 2 }
                 );
             }
         }
