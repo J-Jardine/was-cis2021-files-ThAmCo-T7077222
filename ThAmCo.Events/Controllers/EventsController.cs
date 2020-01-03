@@ -49,7 +49,38 @@ namespace ThAmCo.Events.Controllers
             }
 
             var @event = await _context.Events
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Select(m => new Models.EventDetailsViewModel
+                {
+                    Id = m.Id,
+                    Title = m.Title,
+                    Date = m.Date,
+                    Duration = m.Duration,
+                    TypeId = m.TypeId,
+                    GuestCount = _context.Guests.Where(g => g.EventId == m.Id).Count(),
+                    StaffCount = _context.Staffing.Where(g => g.EventId == m.Id).Count(),
+
+
+                    Guests = _context.Guests.Where(g => g.EventId == m.Id).Select(g => new Models.GuestViewModel
+                    {
+                        Id = g.Customer.Id,
+                        FullName = g.Customer.FirstName + " " + g.Customer.Surname,
+                        Email = g.Customer.Email,
+                        Attended = g.Attended
+                    }),
+                    Staff = _context.Staffing.Where(g => g.EventId == m.Id).Select(g => new Models.StaffViewModel
+                    {
+                        Id = g.Staff.Id,
+                        FullName = g.Staff.FirstName + " " + g.Staff.Surname,
+                        FirstAider = g.Staff.FirstAider
+                    })
+                }).FirstOrDefaultAsync(m => m.Id == id);
+
+            var guestList = _context.Guests.Where(v => v.EventId == @event.Id);
+            var staffList = _context.Staffing.Where(v => v.EventId == @event.Id);
+
+            int guestCount = guestList.Count();
+            int staffCount = staffList.Count();
+
             if (@event == null)
             {
                 return NotFound();
