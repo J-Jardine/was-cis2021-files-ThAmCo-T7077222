@@ -75,11 +75,31 @@ namespace ThAmCo.Events.Controllers
                     })
                 }).FirstOrDefaultAsync(m => m.Id == id);
 
-            var guestList = _context.Guests.Where(v => v.EventId == @event.Id);
-            var staffList = _context.Staffing.Where(v => v.EventId == @event.Id);
-
+            var guestList = _context.Guests.Where(g => g.EventId == @event.Id);
+            var staffList = _context.Staffing.Where(g => g.EventId == @event.Id);
             int guestCount = guestList.Count();
             int staffCount = staffList.Count();
+            if (staffCount > 0 && staffCount >= (guestCount / 10))
+            {
+                @event.EnoughStaff = "Enough staff assigned";
+                @event.EnoughStaffBool = false;
+            }
+            else
+            {
+                @event.EnoughStaff = "Not enough staff assigned";
+                @event.EnoughStaffBool = true;
+            }
+
+            if (staffList.Where(f => f.Staff.FirstAider).Count() > 0)
+            {
+                @event.FirstAider = "First aider assigned";
+                @event.FirstAiderBool = false;
+            }
+            else
+            {
+                @event.FirstAider = "No first aider asigned";
+                @event.FirstAiderBool = true;
+            }
 
             if (@event == null)
             {

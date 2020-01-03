@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <hr />
         <h4>Event Details</h4>
-        <table class="table">
+        <table class="table table-hover">
             <tr>
                 <th>
                     Event Title
@@ -29,6 +29,12 @@
                 <th>
                     Staff Count
                 </th>
+                <th>
+                    Enought Staff Assigned
+                </th>
+                <th>
+                    First Aider
+                </th>
             </tr>
             <tr>
                 <td>
@@ -51,6 +57,30 @@
                 <td>
                     @Html.DisplayFor(model => model.StaffCount)
                 </td>
+                <td>
+                    @if (Model.EnoughStaffBool == true)
+                    {
+                        <font color="red">
+                            @Html.DisplayFor(model => model.EnoughStaff)
+                        </font>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(model => model.EnoughStaff)
+                    }
+                </td>
+                <td>
+                    @if (Model.FirstAiderBool == true)
+                    {
+                        <font color="red">
+                            @Html.DisplayFor(model => model.FirstAider)
+                        </font>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(model => model.FirstAider)
+                    }
+                </td>
             </tr>
         </table>
     </div>
@@ -63,7 +93,7 @@
         <h4>Guest Details</h4>
         @if (Model.Guests.Any())
         {
-            <table class="table">
+            <table class="table table-hover">
                 <tr>
                     <th>
                         Customer Name
@@ -112,7 +142,7 @@
         <h4>Staff Details</h4>
         @if (Model.Staff.Any())
         {
-            <table class="table">
+            <table class="table table-hover">
                 <tr>
                     <th>
                         Staff Full Name
@@ -129,17 +159,17 @@
                 </tr>
                 @foreach (var item in Model.Staff)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(model => item.FullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => item.FirstAider)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(model => model.StaffCount)
-                        </td>
-                    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.FirstAider)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.StaffCount)
+                </td>
+            </tr>
                 }
             </table>
         }

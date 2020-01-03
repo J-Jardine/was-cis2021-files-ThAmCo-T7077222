@@ -22,5 +22,6 @@ namespace ThAmCo.Events.Models
         public string Email { get; set; }
 
         public IEnumerable<Event> Events { get; set; }
+
     }
 }

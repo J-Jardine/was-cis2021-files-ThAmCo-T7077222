@@ -23,6 +23,14 @@ namespace ThAmCo.Events.Models
 
         public int StaffCount { get; set; }
 
+        public String EnoughStaff { get; set; }
+
+        public String FirstAider { get; set; }
+
+        public bool FirstAiderBool { get; set; }
+
+        public bool EnoughStaffBool { get; set; }
+
         public List<GuestBooking> Bookings { get; set; }
 
         public IEnumerable<GuestViewModel> Guests { get; set; }
