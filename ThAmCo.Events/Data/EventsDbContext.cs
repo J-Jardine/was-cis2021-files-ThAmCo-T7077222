@@ -85,8 +85,16 @@ namespace ThAmCo.Events.Data
                 );
 
                 builder.Entity<Event>().HasData(
-                    new Event { Id = 1, Title = "Beer, Bourbon & BBQ", Date = new DateTime(2016, 4, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "BBB" },
-                    new Event { Id = 2, Title = "Chocolate, Wine & Whiskey", Date = new DateTime(2018, 12, 1), Duration = new TimeSpan(12, 0, 0), TypeId = "CWW" }
+                    new Event { Id = 1, Title = "Beer, Bourbon & BBQ", Date = new DateTime(2020, 1, 10), Duration = new TimeSpan(12, 0, 0), TypeId = "BBB" },
+                    new Event { Id = 2, Title = "Chocolate, Wine & Whiskey", Date = new DateTime(2020, 1, 25), Duration = new TimeSpan(12, 0, 0), TypeId = "CWW" },
+                    new Event { Id = 3, Title = "Wine Tasting", Date = new DateTime(2016, 2, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "WTE" },
+                    new Event { Id = 4, Title = "Cheese Tasting", Date = new DateTime(2016, 2, 05), Duration = new TimeSpan(3, 0, 0), TypeId = "CTE" },
+                    new Event { Id = 5, Title = "Steak & Wine Tasting", Date = new DateTime(2016, 3, 29), Duration = new TimeSpan(6, 0, 0), TypeId = "SWT" },
+                    new Event { Id = 6, Title = "Beer Festival", Date = new DateTime(2016, 4, 10), Duration = new TimeSpan(9, 0, 0), TypeId = "BFF" },
+                    new Event { Id = 7, Title = "Middlesbrough Film Festival", Date = new DateTime(2016, 5, 19), Duration = new TimeSpan(6, 0, 0), TypeId = "MFF" },
+                    new Event { Id = 8, Title = "Chili Cook-Off", Date = new DateTime(2016, 6, 20), Duration = new TimeSpan(12, 0, 0), TypeId = "CCO" },
+                    new Event { Id = 9, Title = "International Food Festival", Date = new DateTime(2016, 7, 02), Duration = new TimeSpan(6, 0, 0), TypeId = "IFF" },
+                    new Event { Id = 10, Title = "Creative Film Festival", Date = new DateTime(2016, 7, 08), Duration = new TimeSpan(3, 0, 0), TypeId = "CFF" }
                 );
 
                 builder.Entity<GuestBooking>().HasData(
@@ -129,7 +137,27 @@ namespace ThAmCo.Events.Data
                     new GuestBooking { CustomerId = 17, EventId = 2, Attended = false },
                     new GuestBooking { CustomerId = 18, EventId = 2, Attended = false },
                     new GuestBooking { CustomerId = 19, EventId = 2, Attended = false },
-                    new GuestBooking { CustomerId = 20, EventId = 2, Attended = false }
+                    new GuestBooking { CustomerId = 20, EventId = 2, Attended = false },
+                    new GuestBooking { CustomerId = 1, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 2, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 3, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 4, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 5, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 6, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 7, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 8, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 9, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 10, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 11, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 12, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 13, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 14, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 15, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 16, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 17, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 18, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 19, EventId = 3, Attended = false },
+                    new GuestBooking { CustomerId = 20, EventId = 3, Attended = false }
                 );
 
                 builder.Entity<Staff>().HasData(
