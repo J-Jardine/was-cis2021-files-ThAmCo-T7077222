@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ThAmCo.Events.Data.Staff>
+﻿@model IEnumerable<ThAmCo.Events.Models.StaffIndexViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,10 +13,8 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                Staff Full Name
+                @*@Html.DisplayNameFor(model => model.FullName)*@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstAider)
@@ -28,10 +26,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Surname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstAider)

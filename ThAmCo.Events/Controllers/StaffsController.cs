@@ -21,7 +21,19 @@ namespace ThAmCo.Events.Controllers
         // GET: Staffs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Staff.ToListAsync());
+            var staffDb = _context.Staff;
+            var staffs = await staffDb.ToListAsync();
+
+            List<Models.StaffIndexViewModel> staffIndex = new List<Models.StaffIndexViewModel>();
+            foreach (Staff e in staffs)
+            {
+                Models.StaffIndexViewModel staffViewModel = new Models.StaffIndexViewModel();
+                staffViewModel.Id = e.Id;
+                staffViewModel.FullName = e.FirstName + " " + e.Surname;
+                staffViewModel.FirstAider = e.FirstAider;
+                staffIndex.Add(staffViewModel);
+            }
+            return View(staffIndex);
         }
 
         // GET: Staffs/Details/5
