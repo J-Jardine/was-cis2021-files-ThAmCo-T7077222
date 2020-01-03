@@ -1,38 +1,44 @@
 ﻿@model ThAmCo.Events.Data.Customer
-
+@{ }
 <h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            First Name
-            @*@Html.DisplayNameFor(model => model.FirstName)*@
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt>
-            Surname
-            @*@Html.DisplayNameFor(model => model.Surname)*@
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
-        <dt>
-            Email Address
-            @*@Html.DisplayNameFor(model => model.Email)*@
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default"/> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Are You Sure You Want To Delete Customer @Model.FirstName  @Model.Surname?</h4>
+        <hr />
+        <h4>Delete Customer @Model.FirstName  @Model.Surname</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    Customer First Name
+                    @*@Html.DisplayNameFor(model => model.FirstName)*@
+                </th>
+                <th>
+                    Customer Surname
+                    @*@Html.DisplayNameFor(model => model.Surname)*@
+                </th>
+                <th>
+                    Customer Email Address
+                    @*@Html.DisplayNameFor(model => model.Email)*@
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-12">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
 </div>

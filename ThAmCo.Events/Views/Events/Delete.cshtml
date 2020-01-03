@@ -1,45 +1,51 @@
 ﻿@model ThAmCo.Events.Data.Event
-
-@{
-    ViewData["Title"] = "Delete";
-}
-
+@{ }
 <h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TypeId)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Are You Sure You Want To Delete Event @Model.Title?</h4>
+        <hr />
+        <h4>Delete Customer @Model.Title</h4>
+        <table class="table">
+            <tr>
+                <th>
+                    Event Title
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                </th>
+                <th>
+                    Event Date
+                    @*@Html.DisplayNameFor(model => model.Date)*@
+                </th>
+                <th>
+                    Event Duration
+                    @*@Html.DisplayNameFor(model => model.Duration)*@
+                </th>
+                <th>
+                    Event TypeId
+                    @*@Html.DisplayNameFor(model => model.TypeId)*@
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.TypeId)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-12">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>
 </div>
