@@ -45,8 +45,19 @@ namespace ThAmCo.Events.Controllers
                 return NotFound();
             }
 
-            var staff = await _context.Staff
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var staff = await _context.Staff.Select(m => new Models.StaffDetailsViewModel
+            {
+                Id = m.Id,
+                FullName = m.FirstName + " " + m.Surname,
+                Email = m.Email,
+                FirstAider = m.FirstAider,
+                Events = _context.Staffing.Where(s => s.StaffId == m.Id).Select(e => new Event
+                {
+                    Id = e.EventId,
+                    Date = e.Event.Date,
+                    Title = e.Event.Title
+                })
+            }).FirstOrDefaultAsync(m => m.Id == id);
             if (staff == null)
             {
                 return NotFound();
