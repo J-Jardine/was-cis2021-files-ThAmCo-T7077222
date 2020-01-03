@@ -14,6 +14,9 @@ namespace ThAmCo.Events.Data
 
         public bool FirstAider { get; set; }
 
+        [DataType(DataType.EmailAddress)]
+        public String Email { get; set; }
+
         public List<Staffing> Staffings { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace ThAmCo.Events.Controllers
                 staffViewModel.Id = e.Id;
                 staffViewModel.FullName = e.FirstName + " " + e.Surname;
                 staffViewModel.FirstAider = e.FirstAider;
+                staffViewModel.Email = e.Email;
                 staffIndex.Add(staffViewModel);
             }
             return View(staffIndex);

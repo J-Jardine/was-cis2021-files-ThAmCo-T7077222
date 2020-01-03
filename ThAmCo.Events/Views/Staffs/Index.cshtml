@@ -17,9 +17,11 @@
                 @*@Html.DisplayNameFor(model => model.FullName)*@
             </th>
             <th>
+                Staff Email
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.FirstAider)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +29,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstAider)
