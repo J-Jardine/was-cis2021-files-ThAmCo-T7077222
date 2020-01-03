@@ -15,5 +15,7 @@ namespace ThAmCo.Events.Models
         public TimeSpan? Duration { get; set; }
 
         public int GuestCount { get; set; }
+
+        public int StaffCount { get; set; }
     }
 }

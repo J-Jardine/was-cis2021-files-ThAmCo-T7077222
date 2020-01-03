@@ -33,6 +33,7 @@ namespace ThAmCo.Events.Controllers
                 eventViewModel.Id = e.Id;
                 eventViewModel.Title = e.Title;
                 eventViewModel.GuestCount = _context.Guests.Where(g => g.EventId == e.Id).Count();
+                eventViewModel.StaffCount = _context.Staffing.Where(g => g.EventId == e.Id).Count();
                 eventIndex.Add(eventViewModel);
             }
 

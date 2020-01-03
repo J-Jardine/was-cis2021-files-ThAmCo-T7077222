@@ -25,10 +25,14 @@
                 @*@Html.DisplayNameFor(model => model.Duration)*@
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.TypeId)
-            </th>*@
+            @Html.DisplayNameFor(model => model.TypeId)
+        </th>*@
             <th>
                 Guest Count
+                @*@Html.DisplayNameFor(model => model.GuestCount)*@
+            </th>
+            <th>
+                Staff Count
                 @*@Html.DisplayNameFor(model => model.GuestCount)*@
             </th>
             <th></th>
@@ -47,10 +51,13 @@
                 @Html.DisplayFor(modelItem => item.Duration)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.TypeId)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.TypeId)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.GuestCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffCount)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
