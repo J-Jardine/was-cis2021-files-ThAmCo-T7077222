@@ -87,14 +87,7 @@ namespace ThAmCo.Events.Data
                 builder.Entity<Event>().HasData(
                     new Event { Id = 1, Title = "Beer, Bourbon & BBQ", Date = new DateTime(2020, 1, 10), Duration = new TimeSpan(12, 0, 0), TypeId = "BBB" },
                     new Event { Id = 2, Title = "Chocolate, Wine & Whiskey", Date = new DateTime(2020, 1, 25), Duration = new TimeSpan(12, 0, 0), TypeId = "CWW" },
-                    new Event { Id = 3, Title = "Wine Tasting", Date = new DateTime(2016, 2, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "WTE" },
-                    new Event { Id = 4, Title = "Cheese Tasting", Date = new DateTime(2016, 2, 05), Duration = new TimeSpan(3, 0, 0), TypeId = "CTE" },
-                    new Event { Id = 5, Title = "Steak & Wine Tasting", Date = new DateTime(2016, 3, 29), Duration = new TimeSpan(6, 0, 0), TypeId = "SWT" },
-                    new Event { Id = 6, Title = "Beer Festival", Date = new DateTime(2016, 4, 10), Duration = new TimeSpan(9, 0, 0), TypeId = "BFF" },
-                    new Event { Id = 7, Title = "Middlesbrough Film Festival", Date = new DateTime(2016, 5, 19), Duration = new TimeSpan(6, 0, 0), TypeId = "MFF" },
-                    new Event { Id = 8, Title = "Chili Cook-Off", Date = new DateTime(2016, 6, 20), Duration = new TimeSpan(12, 0, 0), TypeId = "CCO" },
-                    new Event { Id = 9, Title = "International Food Festival", Date = new DateTime(2016, 7, 02), Duration = new TimeSpan(6, 0, 0), TypeId = "IFF" },
-                    new Event { Id = 10, Title = "Creative Film Festival", Date = new DateTime(2016, 7, 08), Duration = new TimeSpan(3, 0, 0), TypeId = "CFF" }
+                    new Event { Id = 3, Title = "Wine & Steak Tasting", Date = new DateTime(2016, 2, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "WST" }
                 );
 
                 builder.Entity<GuestBooking>().HasData(
@@ -179,7 +172,9 @@ namespace ThAmCo.Events.Data
                     new Staffing { StaffId = 5, EventId = 1 },
                     new Staffing { StaffId = 6, EventId = 2 },
                     new Staffing { StaffId = 7, EventId = 1 },
-                    new Staffing { StaffId = 8, EventId = 2 }
+                    new Staffing { StaffId = 8, EventId = 2 },
+                    new Staffing { StaffId = 3, EventId = 3 }
+
                 );
             }
         }
