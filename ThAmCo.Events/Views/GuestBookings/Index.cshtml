@@ -22,23 +22,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Event.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Attended)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {id=item.CustomerId, eventId = item.EventId}) |
-                @Html.ActionLink("Details", "Details", new {id=item.CustomerId}) |
-                @Html.ActionLink("Delete", "Delete", new {id=item.CustomerId, eventId = item.EventId})
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Event.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attended)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId, eventId = item.EventId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CustomerId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId, eventId = item.EventId })
+                </td>
+            </tr>
+        <td><a asp-area="" asp-controller="GuestBooking" asp-route-id="@item.GuestID" asp-action="Delete">Delete</a></td>
+    }
+        </tbody>
+    </table>

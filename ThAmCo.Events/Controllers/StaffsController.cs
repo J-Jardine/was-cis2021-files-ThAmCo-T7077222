@@ -56,7 +56,7 @@ namespace ThAmCo.Events.Controllers
                     Id = e.EventId,
                     Date = e.Event.Date,
                     Title = e.Event.Title
-                })
+                }).Where(w => w.Date >= DateTime.Now)
             }).FirstOrDefaultAsync(m => m.Id == id);
             if (staff == null)
             {
