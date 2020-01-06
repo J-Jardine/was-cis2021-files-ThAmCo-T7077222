@@ -40,7 +40,8 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId, eventId = item.EventId })
                 </td>
             </tr>
-        <td><a asp-area="" asp-controller="GuestBooking" asp-route-id="@item.GuestID" asp-action="Delete">Delete</a></td>
+        @*<td><a asp-area="" asp-controller="GuestBooking" asp-route-id="@item.CustomerId" asp-action="Delete">Delete</a></td>*@
+
     }
         </tbody>
     </table>

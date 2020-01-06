@@ -1,6 +1,13 @@
 ﻿@model ThAmCo.Events.Models.EventDetailsViewModel
 <h2>@Model.Title</h2>
 
+<h2>
+    @if (Model.Date <= DateTime.Now)
+    {
+        <font color="red">The Event Has Already Bean!</font>
+
+    }
+</h2>
 <div class="row">
     <div class="col-md-12">
         <hr />
@@ -135,43 +142,43 @@
         <h4>Staff Details</h4>
         @if (Model.Staff.Any())
         {
-    <table class="table table-hover">
-        <tr>
-            <th>
-                Staff Full Name
-                @*@Html.DisplayNameFor(model => model.Customer)*@
-            </th>
-            <th>
-                First Aider
-                @*@Html.DisplayNameFor(model => model.Email)*@
-            </th>
-            <th>
-                Staff Count
-                @*@Html.DisplayNameFor(model => model.Title)*@
-            </th>
-            <th>
-                Remove Staff
-            </th>
-        </tr>
-        @foreach (var item in Model.Staff)
-        {
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Staff Full Name
+                        @*@Html.DisplayNameFor(model => model.Customer)*@
+                    </th>
+                    <th>
+                        First Aider
+                        @*@Html.DisplayNameFor(model => model.Email)*@
+                    </th>
+                    <th>
+                        Staff Count
+                        @*@Html.DisplayNameFor(model => model.Title)*@
+                    </th>
+                    <th>
+                        Remove Staff
+                    </th>
+                </tr>
+                @foreach (var item in Model.Staff)
+                {
 
-    <tr>
-        <td>
-            @Html.DisplayFor(model => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(model => item.FirstAider)
-        </td>
-        <td>
-            @Html.DisplayFor(model => model.StaffCount)
-        </td>
-        <td>
-            <a asp-action="Index">Remove</a>
-        </td>
-    </tr>
-        }
-    </table>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FirstAider)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.StaffCount)
+                        </td>
+                        <td>
+                            <a asp-action="Index">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </table>
         }
         else
         {
