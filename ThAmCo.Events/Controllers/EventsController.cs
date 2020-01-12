@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ThAmCo.Events.Data;
+using ThAmCo.Events.Models;
+using ThAmCo.Venues.Models;
 
 namespace ThAmCo.Events.Controllers
 {
@@ -220,12 +223,106 @@ namespace ThAmCo.Events.Controllers
             return _context.Events.Any(e => e.Id == id);
         }
 
-        public async Task<IActionResult> ChooseVenue(int id)
+        public async Task<IActionResult> AvailableVenues(int id)
         {
             var @event = await _context.Events.FindAsync(id);
             HttpClient client = new HttpClient();
             client.BaseAddress = new System.Uri("http://localhost:23652");
             client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
+
+            var curEvent = await _context.Events.FindAsync(id);
+
+            String eventType = curEvent.TypeId;
+            DateTime beginDate = curEvent.Date;
+            DateTime endDate = curEvent.Date.Add(curEvent.Duration.Value);
+
+            var availableVenues = new List<AvailableVenues>().AsEnumerable();
+
+            HttpResponseMessage response = await client.GetAsync("api/Availability?eventType=" + eventType
+                + "&beginDate=" + beginDate.ToString("yyyy/MM/dd")
+                + "&endDate=" + endDate.ToString("yyyy/MM/dd"));
+
+            //handle empty venues
+
+            if (response.IsSuccessStatusCode)
+            {
+                availableVenues = await response.Content.ReadAsAsync<IEnumerable<AvailableVenues>>();
+
+                if (availableVenues.Count() == 0)
+                {
+                    Debug.WriteLine("No available venues");
+                }
+            }
+            else
+            {
+                Debug.WriteLine("Recieved a bad response from service");
+            }
+
+
+            var staff = await _context.Staff.Select(s => new StaffList
+            {
+                Id = s.Id,
+                FullName = s.FirstName + " " + s.Surname,
+                StaffCode = s.StaffCode
+            }).ToListAsync();
+
+            ViewData["VenueList"] = new SelectList(availableVenues, "Code", "Name");
+            ViewData["StaffList"] = new SelectList(staff, "StaffCode", "FullName");
+            ViewData["EventTitle"] = curEvent.Title;
+            ViewData["EventId"] = curEvent.Id;
+
+            return View(availableVenues);
+
+        }
+
+        public async Task<IActionResult> ReserveVenue(int? eventId, string venueCode, string staffId)
+        {
+            if (eventId == null || venueCode == null || staffId == null)
+            {
+                return BadRequest();
+            }
+
+            var @event = await _context.Events.FindAsync(eventId);
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new System.Uri("http://localhost:23652");
+            client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
+
+            HttpResponseMessage getAvailability = await client.GetAsync("api/Availability?eventType=" + @event.TypeId
+                + "&beginDate=" + @event.Date.ToString("yyyy/MM/dd")
+                + "&endDate=" + @event.Date.ToString("yyyy/MM/dd"));
+
+            var availability = await getAvailability.Content.ReadAsAsync<IEnumerable<AvailableVenues>>();
+
+            decimal venueCost = (decimal)availability.FirstOrDefault().CostPerHour;
+            @event.VenueCost = venueCost * @event.Duration.Value.Hours;
+
+            @event.Venue = availability.FirstOrDefault().Name;
+
+            _context.Update(@event);
+            await _context.SaveChangesAsync();
+
+            DateTime eventDate = @event.Date;
+
+            ReservationPostDto reservation = new ReservationPostDto();
+            reservation.EventDate = eventDate;
+            reservation.StaffId = staffId;
+            reservation.VenueCode = venueCode;
+
+            string reference = venueCode + eventDate.ToString("yyyyMMdd");
+            HttpResponseMessage delete = await client.DeleteAsync("api/reservations/" + reference);
+            HttpResponseMessage post = await client.PostAsJsonAsync("api/reservations", reservation);
+
+            if (post.IsSuccessStatusCode)
+            {
+
+                HttpResponseMessage getReservation = await client.GetAsync("api/reservations/" + reference);
+                var x = await getReservation.Content.ReadAsAsync<ReservationViewModel>();
+                return View("Reservation", x);
+            }
+             else
+            {
+                return RedirectToAction(nameof(AvailableVenues), eventId);
+            }
 
         }
     }

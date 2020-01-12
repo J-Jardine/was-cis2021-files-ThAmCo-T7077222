@@ -19,5 +19,9 @@ namespace ThAmCo.Events.Data
         public string TypeId { get; set; }
 
         public List<GuestBooking> Bookings { get; set; }
+
+        public decimal VenueCost { get; set; }
+
+        public string Venue { get; set; }
     }
 }

@@ -18,5 +18,6 @@ namespace ThAmCo.Events.Data
         public String Email { get; set; }
 
         public List<Staffing> Staffings { get; set; }
+        public string StaffCode { get; internal set; }
     }
 }

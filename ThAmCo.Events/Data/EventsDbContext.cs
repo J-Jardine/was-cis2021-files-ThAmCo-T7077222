@@ -87,7 +87,10 @@ namespace ThAmCo.Events.Data
                 builder.Entity<Event>().HasData(
                     new Event { Id = 1, Title = "Beer, Bourbon & BBQ", Date = new DateTime(2020, 1, 10), Duration = new TimeSpan(12, 0, 0), TypeId = "BBB" },
                     new Event { Id = 2, Title = "Chocolate, Wine & Whiskey", Date = new DateTime(2020, 1, 25), Duration = new TimeSpan(12, 0, 0), TypeId = "CWW" },
-                    new Event { Id = 3, Title = "Wine & Steak Tasting", Date = new DateTime(2016, 2, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "WST" }
+                    new Event { Id = 3, Title = "Wine & Steak Tasting", Date = new DateTime(2016, 2, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "WST" },
+                    new Event { Id = 4, Title = "Bob's Big 50", Date = new DateTime(2016, 4, 12), Duration = new TimeSpan(6, 0, 0), TypeId = "PTY", Venue = null },
+                    new Event { Id = 5, Title = "Best Wedding Yet", Date = new DateTime(2018, 12, 1), Duration = new TimeSpan(12, 0, 0), TypeId = "WED", Venue = null },
+                    new Event { Id = 6, Title = "Best-er Wedding Yet", Date = new DateTime(2018, 10, 28), Duration = new TimeSpan(1, 0, 0), TypeId = "WED", Venue = null }
                 );
 
                 builder.Entity<GuestBooking>().HasData(
@@ -154,14 +157,14 @@ namespace ThAmCo.Events.Data
                 );
 
                 builder.Entity<Staff>().HasData(
-                    new Staff { Id = 1, Surname = "Bush", FirstName = "Florence", Email = "FlorenceBush@ThAmCo.co.uk"},
-                    new Staff { Id = 2, Surname = "Jardine", FirstName = "Jacob", Email = "JacobJardine@ThAmCo.co.uk" },
-                    new Staff { Id = 3, Surname = "Lawrence", FirstName = "Anastasia", Email = "AnastasiaLawrence@ThAmCo.co.uk" },
-                    new Staff { Id = 4, Surname = "Adams", FirstName = "Ewan", Email = "EwanAdams@ThAmCo.co.uk" },
-                    new Staff { Id = 5, Surname = "Chapman", FirstName = "Esmay", Email = "EsmayChapman@ThAmCo.co.uk" },
-                    new Staff { Id = 6, Surname = "Ferguson", FirstName = "Max", Email = "MaxFerguson@ThAmCo.co.uk" },
-                    new Staff { Id = 7, Surname = "Banks", FirstName = "Isla", Email = "IslaBanks@ThAmCo.co.uk" },
-                    new Staff { Id = 8, Surname = "Watson", FirstName = "Felix", Email = "FelixWatson@ThAmCo.co.uk" }
+                    new Staff { Id = 1, StaffCode = "FBFB", Surname = "Bush", FirstName = "Florence", Email = "FlorenceBush@ThAmCo.co.uk"},
+                    new Staff { Id = 2, StaffCode = "JJJJ", Surname = "Jardine", FirstName = "Jacob", Email = "JacobJardine@ThAmCo.co.uk" },
+                    new Staff { Id = 3, StaffCode = "ALAL", Surname = "Lawrence", FirstName = "Anastasia", Email = "AnastasiaLawrence@ThAmCo.co.uk" },
+                    new Staff { Id = 4, StaffCode = "EAEA", Surname = "Adams", FirstName = "Ewan", Email = "EwanAdams@ThAmCo.co.uk" },
+                    new Staff { Id = 5, StaffCode = "ECEC", Surname = "Chapman", FirstName = "Esmay", Email = "EsmayChapman@ThAmCo.co.uk" },
+                    new Staff { Id = 6, StaffCode = "MFMF", Surname = "Ferguson", FirstName = "Max", Email = "MaxFerguson@ThAmCo.co.uk" },
+                    new Staff { Id = 7, StaffCode = "IBIB", Surname = "Banks", FirstName = "Isla", Email = "IslaBanks@ThAmCo.co.uk" },
+                    new Staff { Id = 8, StaffCode = "FWFW", Surname = "Watson", FirstName = "Felix", Email = "FelixWatson@ThAmCo.co.uk" }
                 );
 
                 builder.Entity<Staffing>().HasData(
@@ -173,8 +176,10 @@ namespace ThAmCo.Events.Data
                     new Staffing { StaffId = 6, EventId = 2 },
                     new Staffing { StaffId = 7, EventId = 1 },
                     new Staffing { StaffId = 8, EventId = 2 },
-                    new Staffing { StaffId = 3, EventId = 3 }
-
+                    new Staffing { StaffId = 3, EventId = 3 },
+                    new Staffing { StaffId = 1, EventId = 4 },
+                    new Staffing { StaffId = 2, EventId = 5 },
+                    new Staffing { StaffId = 2, EventId = 6 }
                 );
             }
         }
