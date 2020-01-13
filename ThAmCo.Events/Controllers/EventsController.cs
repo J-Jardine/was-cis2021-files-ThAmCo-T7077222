@@ -62,7 +62,11 @@ namespace ThAmCo.Events.Controllers
                     TypeId = m.TypeId,
                     GuestCount = _context.Guests.Where(g => g.EventId == m.Id).Count(),
                     StaffCount = _context.Staffing.Where(g => g.EventId == m.Id).Count(),
-
+                    Venue = m.Venue,
+                    VenueCost = m.VenueCost,
+                    Description = m.Description,
+                    WhenMade = m.WhenMade,
+                    Capacity = m.Capacity,
 
                     Guests = _context.Guests.Where(g => g.EventId == m.Id).Select(g => new Models.GuestViewModel
                     {
@@ -213,7 +217,22 @@ namespace ThAmCo.Events.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var @event = await _context.Events.FindAsync(id);
-            _context.Events.Remove(@event);
+            @event.isDeleted = false;
+
+            _context.Guests.RemoveRange(_context.Guests.Where(g => g.EventId == id));
+            _context.Staffing.RemoveRange(_context.Staffing.Where(g => g.EventId == id));
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new System.Uri("http://localhost:23652");
+            client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
+
+            HttpResponseMessage delete = await client.DeleteAsync("api/reservations/" + @event.Reference);
+
+            @event.Reference = null;
+
+            _context.Update(@event);
+
+            //_context.Events.Remove(@event);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -293,10 +312,10 @@ namespace ThAmCo.Events.Controllers
 
             var availability = await getAvailability.Content.ReadAsAsync<IEnumerable<AvailableVenues>>();
 
-            decimal venueCost = (decimal)availability.FirstOrDefault().CostPerHour;
+            decimal venueCost = (decimal)availability.FirstOrDefault(r => r.Code == venueCode).CostPerHour;
             @event.VenueCost = venueCost * @event.Duration.Value.Hours;
 
-            @event.Venue = availability.FirstOrDefault().Name;
+            @event.Venue = availability.FirstOrDefault(r => r.Code == venueCode).Name;
 
             _context.Update(@event);
             await _context.SaveChangesAsync();
@@ -308,20 +327,32 @@ namespace ThAmCo.Events.Controllers
             reservation.StaffId = staffId;
             reservation.VenueCode = venueCode;
 
-            string reference = venueCode + eventDate.ToString("yyyyMMdd");
-            HttpResponseMessage delete = await client.DeleteAsync("api/reservations/" + reference);
+            @event.Description = availability.FirstOrDefault(r => r.Code == venueCode).Description;
+            @event.Capacity = availability.FirstOrDefault(r => r.Code == venueCode).Capacity;
+            @event.WhenMade = reservation.EventDate;
+
+            if (@event.Reference != null)
+            {
+                HttpResponseMessage delete = await client.DeleteAsync("api/reservations/" + @event.Reference);
+            }
+
+            @event.Reference = reservation.VenueCode + reservation.EventDate.ToString("yyyyMMdd");
+
+            _context.Update(@event);
+            await _context.SaveChangesAsync();
+
             HttpResponseMessage post = await client.PostAsJsonAsync("api/reservations", reservation);
 
             if (post.IsSuccessStatusCode)
             {
 
-                HttpResponseMessage getReservation = await client.GetAsync("api/reservations/" + reference);
+                HttpResponseMessage getReservation = await client.GetAsync("api/reservations/" + @event.Reference);
                 var x = await getReservation.Content.ReadAsAsync<ReservationViewModel>();
                 return View("Reservation", x);
             }
              else
             {
-                return RedirectToAction(nameof(AvailableVenues), eventId);
+                return RedirectToAction(nameof(Details), eventId);
             }
 
         }

@@ -48,5 +48,6 @@ namespace ThAmCo.Events.Models
         public double CostPerHour { get; set; }
 
         public string StaffCode { get; set; }
+
     }
 }

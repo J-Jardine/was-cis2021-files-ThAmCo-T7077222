@@ -36,5 +36,16 @@ namespace ThAmCo.Events.Models
         public IEnumerable<GuestViewModel> Guests { get; set; }
 
         public IEnumerable<StaffViewModel> Staff { get; set; }
+
+        public string Venue { get; set; }
+
+        public decimal VenueCost { get; set; }
+
+        public DateTime WhenMade { get; set; }
+
+        public string Description { get; set; }
+
+        [Range(1, Int32.MaxValue)]
+        public int Capacity { get; set; }
     }
 }

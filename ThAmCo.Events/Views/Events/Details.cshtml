@@ -11,8 +11,48 @@
 <div class="row">
     <div class="col-md-12">
         <hr />
+        <h4>Venue Details</h4>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    Venue
+                </th>
+                <th>
+                    Venue Cost
+                </th>
+                <th>
+                    Desciption
+                </th>
+                <th>
+                    Capactity
+                </th>
+                <th>
+                    When Made
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Venue)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VenueCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.WhenMade)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-12">
+        <hr />
         <h4>Event Details</h4>
-        <table class="table table-hover">
+        <table class="table table-striped table-hover">
             <tr>
                 <th>
                     Event Title
@@ -100,7 +140,7 @@
         <h4>Guest Details</h4>
         @if (Model.Guests.Any())
         {
-            <table class="table table-hover">
+            <table class="table table-striped table-hover">
                 <tr>
                     <th>
                         Customer Name

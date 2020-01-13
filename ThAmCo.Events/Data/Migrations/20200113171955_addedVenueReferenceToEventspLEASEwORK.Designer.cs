@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThAmCo.Events.Data;
 
 namespace ThAmCo.Events.Data.Migrations
 {
     [DbContext(typeof(EventsDbContext))]
-    partial class EventsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200113171955_addedVenueReferenceToEventspLEASEwORK")]
+    partial class addedVenueReferenceToEventspLEASEwORK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,19 +95,17 @@ namespace ThAmCo.Events.Data.Migrations
 
                     b.Property<DateTime>("WhenMade");
 
-                    b.Property<bool>("isDeleted");
-
                     b.HasKey("Id");
 
                     b.ToTable("Events");
 
                     b.HasData(
-                        new { Id = 1, Capacity = 0, Date = new DateTime(2020, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 12, 0, 0, 0), Title = "Beer, Bourbon & BBQ", TypeId = "BBB", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), isDeleted = false },
-                        new { Id = 2, Capacity = 0, Date = new DateTime(2020, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 12, 0, 0, 0), Title = "Chocolate, Wine & Whiskey", TypeId = "CWW", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), isDeleted = false },
-                        new { Id = 3, Capacity = 0, Date = new DateTime(2016, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 6, 0, 0, 0), Title = "Wine & Steak Tasting", TypeId = "WST", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), isDeleted = false },
-                        new { Id = 4, Capacity = 0, Date = new DateTime(2016, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 6, 0, 0, 0), Title = "Bob's Big 50", TypeId = "PTY", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), isDeleted = false },
-                        new { Id = 5, Capacity = 0, Date = new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 12, 0, 0, 0), Title = "Best Wedding Yet", TypeId = "WED", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), isDeleted = false },
-                        new { Id = 6, Capacity = 0, Date = new DateTime(2018, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 1, 0, 0, 0), Title = "Best-er Wedding Yet", TypeId = "WED", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), isDeleted = false }
+                        new { Id = 1, Capacity = 0, Date = new DateTime(2020, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 12, 0, 0, 0), Title = "Beer, Bourbon & BBQ", TypeId = "BBB", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                        new { Id = 2, Capacity = 0, Date = new DateTime(2020, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 12, 0, 0, 0), Title = "Chocolate, Wine & Whiskey", TypeId = "CWW", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                        new { Id = 3, Capacity = 0, Date = new DateTime(2016, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 6, 0, 0, 0), Title = "Wine & Steak Tasting", TypeId = "WST", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                        new { Id = 4, Capacity = 0, Date = new DateTime(2016, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 6, 0, 0, 0), Title = "Bob's Big 50", TypeId = "PTY", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                        new { Id = 5, Capacity = 0, Date = new DateTime(2018, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 12, 0, 0, 0), Title = "Best Wedding Yet", TypeId = "WED", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                        new { Id = 6, Capacity = 0, Date = new DateTime(2018, 10, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), Duration = new TimeSpan(0, 1, 0, 0, 0), Title = "Best-er Wedding Yet", TypeId = "WED", VenueCost = 0m, WhenMade = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                     );
                 });
 

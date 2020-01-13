@@ -24,10 +24,10 @@
             </tr>
             <tr>
                 <td>
-                    @Html.DisplayFor(model => model.CustomerId)
+                    @Html.DisplayFor(model => model.Customer.FirstName)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.EventId)
+                    @Html.DisplayFor(model => model.Event.Title)
                 </td>
                 <td>
                     <form asp-action="Edit">
@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input asp-for="Attended" /> @Html.DisplayNameFor(model => model.Attended)
+                                    <input onclick="UpdateAttendance(@Model.CustomerId, @Model.EventId)" asp-for="Attended" /> @Html.DisplayNameFor(model => model.Attended)
                                 </label>
                             </div>
                         </div>
@@ -58,4 +58,21 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function UpdateAttendance(CustomerId, EventId)
+        {
+            $.ajax({
+                url: "http://localhost:22263/GuestBookings/UpdateAttendance/" + CustomerId + "?eventId=" + EventId,
+                type: "POST",
+                crossDomain: false,
+                success: function () {
+                    alert("Worked");
+                },
+                error: function () {
+                    alert("Didn't work");
+                }
+            });
+        }
+    </script>
 }
+

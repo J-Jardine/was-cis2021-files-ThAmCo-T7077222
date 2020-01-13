@@ -96,11 +96,11 @@ namespace ThAmCo.Events.Controllers
             {
                 _context.Add(guestBooking);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Events");
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Email", guestBooking.CustomerId);
             ViewData["EventId"] = new SelectList(_context.Events, "Id", "Title", guestBooking.EventId);
-            return View(guestBooking);
+            return RedirectToAction("Index", "Events");
         }
 
         // GET: GuestBookings/Edit/5
@@ -119,6 +119,23 @@ namespace ThAmCo.Events.Controllers
             ViewData["CustomerId"] = new SelectList(_context.Customers, "Id", "Email", guestBooking.CustomerId);
             ViewData["EventId"] = new SelectList(_context.Events, "Id", "Title", guestBooking.EventId);
             return View(guestBooking);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateAttendance(int? id, int? eventId)
+        {
+            var guestBooking = await _context.Guests.FindAsync(id, eventId);
+            if (guestBooking.Attended == true)
+            {
+                guestBooking.Attended = false;
+            }
+            else
+            {
+                guestBooking.Attended = true;
+            }
+            _context.Update(guestBooking);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
 
         // POST: GuestBookings/Edit/5

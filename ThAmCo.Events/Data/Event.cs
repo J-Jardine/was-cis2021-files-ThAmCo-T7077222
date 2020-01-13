@@ -23,5 +23,16 @@ namespace ThAmCo.Events.Data
         public decimal VenueCost { get; set; }
 
         public string Venue { get; set; }
+
+        public string Reference { get; set; }
+
+        public DateTime WhenMade { get; set; }
+
+        public string Description { get; set; }
+
+        [Range(1, Int32.MaxValue)]
+        public int Capacity { get; set; }
+
+        public bool isDeleted { get; set; }
     }
 }
