@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ThAmCo.Venues</name>
+    </assembly>
+    <members>
+        <member name="T:ThAmCo.Venues.Data.Availability">
+            <summary>
+            Avilablily of a venue
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Availability.Date">
+            <summary>
+            Date for when the venue will be booked from and to
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Availability.VenueCode">
+            <summary>
+            Venue code
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Availability.Venue">
+            <summary>
+            venue name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Availability.CostPerHour">
+            <summary>
+            cost of the venue per hour
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Availability.Reservation">
+            <summary>
+            Reservation for the venue
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Venues.Data.EventType">
+            <summary>
+            Event type information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.EventType.Id">
+            <summary>
+            string for event type
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.EventType.Title">
+            <summary>
+            event title
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.EventType.SuitableVenues">
+            <summary>
+            Listing the suitable venues
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Venues.Data.Reservation">
+            <summary>
+            Reservation information for a venue
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Reservation.Reference">
+            <summary>
+            Reference of the reservation
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Reservation.EventDate">
+            <summary>
+            Event date
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Reservation.VenueCode">
+            <summary>
+            venue code
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Reservation.Availability">
+            <summary>
+            availablity for venue
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Reservation.WhenMade">
+            <summary>
+            When the reservation was made
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Reservation.StaffId">
+            <summary>
+            staff id in order for api to call
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Venues.Data.Suitability">
+            <summary>
+            suitability of venue
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Suitability.EventTypeId">
+            <summary>
+            event type id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Suitability.EventType">
+            <summary>
+            event type
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Suitability.VenueCode">
+            <summary>
+            venue code
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Suitability.Venue">
+            <summary>
+            Calling upon venue
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Venues.Data.Venue">
+            <summary>
+            Getting venue information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Venue.Code">
+            <summary>
+            venue code
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Venue.Name">
+            <summary>
+            venue name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Venue.Description">
+            <summary>
+            description of the venue
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Venue.Capacity">
+            <summary>
+            capicity that the venue can hold
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Venue.SuitableEventTypes">
+            <summary>
+            list suitable event types
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Venues.Data.Venue.AvailableDates">
+            <summary>
+            list available venue dates
+            </summary>
+        </member>
+    </members>
+</doc>

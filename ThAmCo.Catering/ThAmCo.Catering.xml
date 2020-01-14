@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ThAmCo.Catering</name>
+    </assembly>
+    <members>
+        <member name="T:ThAmCo.Catering.Controllers.CateringDbContext">
+            <summary>
+            Linking to the database for ThAmCo.Catering
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.CateringDbContext.Menu">
+            <summary>
+            Menu lists
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.CateringDbContext.FoodBooking">
+            <summary>
+            list of food bookings
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.CateringDbContext.HostEnv">
+            <summary>
+            Host environment for database
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Catering.Controllers.CateringDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{ThAmCo.Catering.Controllers.CateringDbContext},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            New DbContext
+            </summary>
+            <param name="options"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:ThAmCo.Catering.Controllers.CateringDbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Setting up the databse configuration
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:ThAmCo.Catering.Controllers.CateringDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Calling the database on create
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:ThAmCo.Catering.Controllers.FoodBooking">
+            <summary>
+            Used to store the menues that are booked onto an event
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.FoodBooking.MenuId">
+            <summary>
+            Id of Menu
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.FoodBooking.Menu">
+            <summary>
+            Menu object that is being booked
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.FoodBooking.EventId">
+            <summary>
+            id of an event that the menu is booked on
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Catering.Controllers.Menu">
+            <summary>
+            Menu that can be booked onto events
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.Menu.Id">
+            <summary>
+            Id for menu
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.Menu.Starter">
+            <summary>
+            Starter of the food menu
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.Menu.Main">
+            <summary>
+            Main course of food menu
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.Menu.Desert">
+            <summary>
+            Desert of food menu
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.Menu.Cost">
+            <summary>
+            Cost of food menu
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Catering.Controllers.Menu.Booking">
+            <summary>
+            Bookings that the menu is booked on
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -30,15 +30,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+
                     @*Link to customers index page*@
                     <li><a asp-area="" asp-controller="Customers" asp-action="index">Customers</a></li>
                     @*Link to events index page*@
                     <li><a asp-area="" asp-controller="Events" asp-action="index">Events</a></li>
                     @*Link to staff index page*@
                     <li><a asp-area="" asp-controller="Staffs" asp-action="index">Staff</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -51,7 +51,7 @@
         <hr />
         <footer>
             @*Gets the current year*@
-            <p>&copy; @DateTime.Now.Year - ThAmCo.Events</p>
+            <p>&copy; @DateTime.Now.Year - ThAmCo.Events T7077222 </p>
         </footer>
     </div>
 

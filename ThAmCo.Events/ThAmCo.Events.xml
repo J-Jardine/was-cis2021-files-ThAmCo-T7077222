@@ -1,0 +1,1186 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ThAmCo.Events</name>
+    </assembly>
+    <members>
+        <member name="T:ThAmCo.Events.Controllers.CustomersController">
+            <summary>
+            Controller for customers
+            </summary>
+        </member>
+        <member name="F:ThAmCo.Events.Controllers.CustomersController._context">
+            <summary>
+            Allowing EventsDbContext to be used
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.#ctor(ThAmCo.Events.Data.EventsDbContext)">
+            <summary>
+            Initialises the customer controller
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.Index">
+            <summary>
+            Gets a view of all the customers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Gets a view of the customer detials matching to the id selected
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.Create">
+            <summary>
+            Pulls the create view model so a new customer can be added
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.Create(ThAmCo.Events.Data.Customer)">
+            <summary>
+            Adds a new customer to the database
+            </summary>
+            <param name="customer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Gets the edit view for a customer matching the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.Edit(System.Int32,ThAmCo.Events.Data.Customer)">
+            <summary>
+            Puts the edited details into the database
+            </summary>
+            <param name="id"></param>
+            <param name="customer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Pulls the delete view for deleting a customer
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.CustomersController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Deletes a customer from the database matching the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ThAmCo.Events.Controllers.EventsController">
+            <summary>
+            Controller for events
+            </summary>
+        </member>
+        <member name="F:ThAmCo.Events.Controllers.EventsController._context">
+            <summary>
+            Allowing EventsDbContext to be used
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.#ctor(ThAmCo.Events.Data.EventsDbContext)">
+            <summary>
+            Initialised the events controller
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.Index">
+            <summary>
+            Gets the view for all the events
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Gets the detials for an event from the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.Create(ThAmCo.Events.Data.Event)">
+            <summary>
+            Pulls the create view for creating a new event
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Gets the edit view for an event from the id passed
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.Edit(System.Int32,ThAmCo.Events.Models.EditEventViewModel)">
+            <summary>
+            Puts the edited event information into the database
+            </summary>
+            <param name="id"></param>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Getting the delete view for an event from the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Soft deleting and event
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.EventExists(System.Int32)">
+            <summary>
+            Checking the event exists from the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.AvailableVenues(System.Int32)">
+            <summary>
+            Getting the avalable venues for an event from the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.EventsController.ReserveVenue(System.Nullable{System.Int32},System.String,System.String)">
+            <summary>
+            Reserving a venue for and event
+            </summary>
+            <param name="eventId"></param>
+            <param name="venueCode"></param>
+            <param name="staffId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ThAmCo.Events.Controllers.GuestBookingsController">
+            <summary>
+            Controller for guest bookings
+            </summary>
+        </member>
+        <member name="F:ThAmCo.Events.Controllers.GuestBookingsController._context">
+            <summary>
+            Allowing EventsDbContext to be used
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.#ctor(ThAmCo.Events.Data.EventsDbContext)">
+            <summary>
+            Initialises the guest booking controller
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.Index(System.Nullable{System.Int32})">
+            <summary>
+            Gets a view of all the guest bookings matching EventId
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Gets a view of the guest booking details matching to the id selected
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.Create(System.Nullable{System.Int32})">
+            <summary>
+            pulls the create view model so a customer can be added to an 
+            event as a guest matching the EventId
+            </summary>
+            <param name="EventId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.Create(ThAmCo.Events.Data.GuestBooking)">
+            <summary>
+            Adds a new guest to the database
+            </summary>
+            <param name="guestBooking"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.Edit(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Gets the edit view for a guest matching the guest id and EventId
+            </summary>
+            <param name="id"></param>
+            <param name="eventId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.UpdateAttendance(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Ajax method for updatin the customer attendance 
+            </summary>
+            <param name="id"></param>
+            <param name="eventId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.Edit(System.Int32,ThAmCo.Events.Data.GuestBooking)">
+            <summary>
+            Puts the edited details into the database
+            </summary>
+            <param name="id"></param>
+            <param name="guestBooking"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.Delete(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Pulls te delete view for deleting a guest
+            </summary>
+            <param name="id"></param>
+            <param name="eventId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.GuestBookingsController.DeleteConfirmed(System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Delete the gust from the database matching the guest id and EventId
+            </summary>
+            <param name="id"></param>
+            <param name="eventId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ThAmCo.Events.Controllers.HomeController">
+            <summary>
+            The home controller that is the default page for Events
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.HomeController.Index">
+            <summary>
+            Index view
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.HomeController.About">
+            <summary>
+            About view
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.HomeController.Contact">
+            <summary>
+            Contact view
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.HomeController.Privacy">
+            <summary>
+            Privacy view
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.HomeController.Error">
+            <summary>
+            Error view
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ThAmCo.Events.Controllers.StaffingsController">
+            <summary>
+            Controller for staffing
+            </summary>
+        </member>
+        <member name="F:ThAmCo.Events.Controllers.StaffingsController._context">
+            <summary>
+            Allowing EventsDbContext to be used
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.#ctor(ThAmCo.Events.Data.EventsDbContext)">
+            <summary>
+            Initialised the staffing controller
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.Index">
+            <summary>
+            Gets a view of all the staffing
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Gets a view of the staffing details matching to the id selected
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.Create">
+            <summary>
+            Pulls the create view so a new staff memember can be added to
+            an event
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.Create(ThAmCo.Events.Data.Staffing)">
+            <summary>
+            Adding the newly assigned staff to an event in te database
+            </summary>
+            <param name="staffing"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Gets the edit view for staffing matching the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.Edit(System.Int32,ThAmCo.Events.Data.Staffing)">
+            <summary>
+            Puts the edited details into the database
+            </summary>
+            <param name="id"></param>
+            <param name="staffing"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Pulls the delete view for deleing a staff from an event 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffingsController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Deletes the staff from an event matching the staffId
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ThAmCo.Events.Controllers.StaffsController">
+            <summary>
+            Controller for Staff
+            </summary>
+        </member>
+        <member name="F:ThAmCo.Events.Controllers.StaffsController._context">
+            <summary>
+            Allowing EventsDbContext to be used
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.#ctor(ThAmCo.Events.Data.EventsDbContext)">
+            <summary>
+            Initiaised the staff controller
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.Index">
+            <summary>
+            Pulls the index of all staff members
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.Details(System.Nullable{System.Int32})">
+            <summary>
+            Pulls the detials view of a staff member based of the 
+            id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.Create">
+            <summary>
+            Gets the create view for creating a new staff member
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.Create(ThAmCo.Events.Data.Staff)">
+            <summary>
+            Adds the newly created staff member to the database
+            </summary>
+            <param name="staff"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.Edit(System.Nullable{System.Int32})">
+            <summary>
+            Gets the edit view for a staff member from the
+            selected id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.Edit(System.Int32,ThAmCo.Events.Data.Staff)">
+            <summary>
+            Puts the edited staff member details into the database
+            </summary>
+            <param name="id"></param>
+            <param name="staff"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.Delete(System.Nullable{System.Int32})">
+            <summary>
+            Gets the delete view for a staff member from the id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.DeleteConfirmed(System.Int32)">
+            <summary>
+            Deletes the staff member from the database from the 
+            selected id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.StaffExists(System.Int32)">
+            <summary>
+            Checking to see if the staff member exists
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ThAmCo.Events.Controllers.StaffsController.UpdateFirstAider(System.Nullable{System.Int32})">
+            <summary>
+            Ajax method for updating the staff first aided boolean 
+            based on the id selected
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ThAmCo.Events.Data.Customer">
+            <summary>
+            Used to represent a customer
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Customer.Id">
+            <summary>
+            Id of a customer
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Customer.Surname">
+            <summary>
+            Customer surname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Customer.FirstName">
+            <summary>
+            Customer first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Customer.Email">
+            <summary>
+            Customer email address
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Customer.Bookings">
+            <summary>
+            Bookings that the customer is on
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Data.Event">
+            <summary>
+            Represents an event
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Id">
+            <summary>
+            Event id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Title">
+            <summary>
+            Event title
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Date">
+            <summary>
+            Event date
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Duration">
+            <summary>
+            Event duration
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.TypeId">
+            <summary>
+            event typeid
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Bookings">
+            <summary>
+            event booking
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.VenueCost">
+            <summary>
+            venue cost for event
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Venue">
+            <summary>
+            venue name 
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Reference">
+            <summary>
+            venue reference
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.WhenMade">
+            <summary>
+            When the venue reservation was made
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Description">
+            <summary>
+            Description of the venue
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.Capacity">
+            <summary>
+            The capacity of venue
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Event.isDeleted">
+            <summary>
+            Boolean to check if the venue has been removed
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Data.EventsDbContext">
+            <summary>
+            Linking the database for ThAmCo.Events
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.EventsDbContext.Customers">
+            <summary>
+            Customer list
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.EventsDbContext.Events">
+            <summary>
+            Event list
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.EventsDbContext.Guests">
+            <summary>
+            Guest list
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.EventsDbContext.Staff">
+            <summary>
+            staff list
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.EventsDbContext.Staffing">
+            <summary>
+            staffing list
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.EventsDbContext.HostEnv">
+            <summary>
+            Host environment for database
+            </summary>
+        </member>
+        <member name="M:ThAmCo.Events.Data.EventsDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{ThAmCo.Events.Data.EventsDbContext},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            New dbContext
+            </summary>
+            <param name="options"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:ThAmCo.Events.Data.EventsDbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Setting up the database configuration
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:ThAmCo.Events.Data.EventsDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Calling the database on creating
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:ThAmCo.Events.Data.GuestBooking">
+            <summary>
+            Used to represent guest booking
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.GuestBooking.CustomerId">
+            <summary>
+            Customer id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.GuestBooking.Customer">
+            <summary>
+            Customer name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.GuestBooking.EventId">
+            <summary>
+            Event id for event booked onto
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.GuestBooking.Event">
+            <summary>
+            Event customer booked on
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.GuestBooking.Attended">
+            <summary>
+            Attendence for event
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Data.Staff">
+            <summary>
+            Used o represent a Staff member
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staff.Id">
+            <summary>
+            Staff id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staff.Surname">
+            <summary>
+            Staff surname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staff.FirstName">
+            <summary>
+            Staff first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staff.FirstAider">
+            <summary>
+            Is staff a first aider or not
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staff.Email">
+            <summary>
+            Staff email address
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staff.Staffings">
+            <summary>
+            list of staff information 
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Data.Staffing">
+            <summary>
+            Representing what events a staff member is on
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staffing.StaffId">
+            <summary>
+            Staff id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staffing.Staff">
+            <summary>
+            Staff list
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staffing.EventId">
+            <summary>
+            Event id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Data.Staffing.Event">
+            <summary>
+            Event list
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.AvailableVenues">
+            <summary>
+            Used to pull availbale venues
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.AvailableVenues.Code">
+            <summary>
+            Venue code
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.AvailableVenues.Name">
+            <summary>
+            Venue name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.AvailableVenues.Description">
+            <summary>
+            Venue description
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.AvailableVenues.Capacity">
+            <summary>
+            Venue capacity
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.AvailableVenues.Date">
+            <summary>
+            Venue date
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.AvailableVenues.CostPerHour">
+            <summary>
+            Venue cost per hour
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.AvailableVenues.StaffCode">
+            <summary>
+            staff code to allow for api call
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.CustomerDetailsViewModel">
+            <summary>
+            Used to pull customer details
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerDetailsViewModel.Id">
+            <summary>
+            customer id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerDetailsViewModel.Surname">
+            <summary>
+            customer surname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerDetailsViewModel.FirstName">
+            <summary>
+            customer first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerDetailsViewModel.FullName">
+            <summary>
+            customer full name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerDetailsViewModel.Email">
+            <summary>
+            customer email address
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerDetailsViewModel.Events">
+            <summary>
+            customer events they are on
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.CustomerIndexViewModel">
+            <summary>
+            Used to pull the customer index details
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerIndexViewModel.Id">
+            <summary>
+            customer id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerIndexViewModel.Surname">
+            <summary>
+            customer surname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerIndexViewModel.FirstName">
+            <summary>
+            customer first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerIndexViewModel.FullName">
+            <summary>
+            customer fullname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerIndexViewModel.Email">
+            <summary>
+            customer email address
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.CustomerIndexViewModel.Bookings">
+            <summary>
+            Booking a customer is on
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.EditEventViewModel">
+            <summary>
+            Event edit information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EditEventViewModel.Id">
+            <summary>
+            event id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EditEventViewModel.Title">
+            <summary>
+            event title
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EditEventViewModel.Date">
+            <summary>
+            event date
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EditEventViewModel.Duration">
+            <summary>
+            event duration
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EditEventViewModel.Attended">
+            <summary>
+            avent attended
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EditEventViewModel.Bookings">
+            <summary>
+            customer booked onto events
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.ErrorViewModel">
+            <summary>
+            View model for error
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.ErrorViewModel.RequestId">
+            <summary>
+            request id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.ErrorViewModel.ShowRequestId">
+            <summary>
+            show request id
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.EventDetailsViewModel">
+            <summary>
+            pulls inforation for event detials
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Id">
+            <summary>
+            event id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Title">
+            <summary>
+            event title
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Date">
+            <summary>
+            event date
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Duration">
+            <summary>
+            event duration
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.TypeId">
+            <summary>
+            event type id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.GuestCount">
+            <summary>
+            event guest count
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.StaffCount">
+            <summary>
+            event staff cout
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.EnoughStaff">
+            <summary>
+            string dispaying message
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.FirstAider">
+            <summary>
+            String displaying message
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.FirstAiderBool">
+            <summary>
+            if first aider is on the event or not
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.EnoughStaffBool">
+            <summary>
+            if there are enough staff on the event or not
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Bookings">
+            <summary>
+            list of guest booked on to the event
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Guests">
+            <summary>
+            Linking to the guest view model
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Staff">
+            <summary>
+            Linking to the staff view model
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Venue">
+            <summary>
+            venue name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.VenueCost">
+            <summary>
+            venue cost
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.WhenMade">
+            <summary>
+            when the reservation was made
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Description">
+            <summary>
+            venue description
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventDetailsViewModel.Capacity">
+            <summary>
+            capcaity of the venue
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.EventIndexViewModel">
+            <summary>
+            pulls event index information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventIndexViewModel.Id">
+            <summary>
+            event id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventIndexViewModel.Title">
+            <summary>
+            event title
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventIndexViewModel.Date">
+            <summary>
+            event date
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventIndexViewModel.Duration">
+            <summary>
+            event duration
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventIndexViewModel.GuestCount">
+            <summary>
+            event guest count
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.EventIndexViewModel.StaffCount">
+            <summary>
+            event staff count
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.GuestViewModel">
+            <summary>
+            Pulls guest information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.GuestViewModel.EventId">
+            <summary>
+            event id the guest is booked on
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.GuestViewModel.Id">
+            <summary>
+            guest id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.GuestViewModel.Surname">
+            <summary>
+            guest surame
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.GuestViewModel.FirstName">
+            <summary>
+            guest first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.GuestViewModel.FullName">
+            <summary>
+            guest fullname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.GuestViewModel.Email">
+            <summary>
+            guest email address
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.GuestViewModel.Attended">
+            <summary>
+            if the guest has attended or not
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.ReservationViewModel">
+            <summary>
+            Pulls reservation information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.ReservationViewModel.Reference">
+            <summary>
+            Reservation reference
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.ReservationViewModel.EventDate">
+            <summary>
+            event date
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.ReservationViewModel.VenueCode">
+            <summary>
+            the venue code
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.ReservationViewModel.WhenMade">
+            <summary>
+            when the reservation was made
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.ReservationViewModel.StaffId">
+            <summary>
+            staff id to create the api call
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.StaffDetailsViewModel">
+            <summary>
+            pulls staff details information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffDetailsViewModel.Id">
+            <summary>
+            stafff id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffDetailsViewModel.Surname">
+            <summary>
+            staff surname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffDetailsViewModel.FirstName">
+            <summary>
+            staff first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffDetailsViewModel.FullName">
+            <summary>
+            staff full name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffDetailsViewModel.FirstAider">
+            <summary>
+            if the staff is a first aider
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffDetailsViewModel.Email">
+            <summary>
+            staff email address
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffDetailsViewModel.Events">
+            <summary>
+            events the staff is booked on
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.StaffIndexViewModel">
+            <summary>
+            pulls staff index information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffIndexViewModel.Id">
+            <summary>
+            staff id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffIndexViewModel.Surname">
+            <summary>
+            staff surname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffIndexViewModel.FirstName">
+            <summary>
+            stafff first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffIndexViewModel.FullName">
+            <summary>
+            staff full name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffIndexViewModel.FirstAider">
+            <summary>
+            if the staff is a first aider or not
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffIndexViewModel.Email">
+            <summary>
+            staff email address
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffIndexViewModel.Staffings">
+            <summary>
+            staffing list 
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.StaffList">
+            <summary>
+            pulls staff list information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffList.Id">
+            <summary>
+            staff id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffList.FullName">
+            <summary>
+            staff full name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffList.StaffCode">
+            <summary>
+            staff code
+            </summary>
+        </member>
+        <member name="T:ThAmCo.Events.Models.StaffViewModel">
+            <summary>
+            Pulls staff information
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffViewModel.Id">
+            <summary>
+            staff id
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffViewModel.Surname">
+            <summary>
+            staff surname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffViewModel.FirstName">
+            <summary>
+            staff first name
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffViewModel.FullName">
+            <summary>
+            staff fullname
+            </summary>
+        </member>
+        <member name="P:ThAmCo.Events.Models.StaffViewModel.FirstAider">
+            <summary>
+            is the staff a first aider or not
+            </summary>
+        </member>
+    </members>
+</doc>
