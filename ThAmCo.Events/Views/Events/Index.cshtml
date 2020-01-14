@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ThAmCo.Events.Models.EventIndexViewModel>
+
+@{ViewData["Title"] = "Index"; }
+
+
+    <h2>Index</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Event Title
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                </th>
+                <th>
+                    Event Date
+                    @*@Html.DisplayNameFor(model => model.Date)*@
+                </th>
+                <th>
+                    Event Duration
+                    @*@Html.DisplayNameFor(model => model.Duration)*@
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.TypeId)
+                    </th>*@
+                <th>
+                    Guest Count
+                    @*@Html.DisplayNameFor(model => model.GuestCount)*@
+                </th>
+                <th>
+                    Staff Count
+                    @*@Html.DisplayNameFor(model => model.GuestCount)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.TypeId)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GuestCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffCount)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="AvailableVenues" asp-route-id="@item.Id">Choose venue</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                        @*Link to add guest to the event*@
+                        <a asp-controller="GuestBookings" asp-action="Create" asp-route-EventId="@item.Id">Add Guest</a>  |
+                        <a asp-controller="GuestBookings" asp-action="Index" asp-route-EventId="@item.Id">Guest List</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

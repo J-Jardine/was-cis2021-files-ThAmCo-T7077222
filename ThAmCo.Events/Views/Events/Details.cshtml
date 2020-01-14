@@ -1,0 +1,241 @@
+﻿@model ThAmCo.Events.Models.EventDetailsViewModel
+<h2>@Model.Title</h2>
+
+<h2>
+    @if (Model.Date <= DateTime.Now)
+    {
+        <font color="red">The Event Has Already Bean!</font>
+
+    }
+</h2>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <h4>Venue Details</h4>
+        @if (Model.Venue != null)
+        {
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Venue
+            </th>
+            <th>
+                Venue Cost
+            </th>
+            <th>
+                Desciption
+            </th>
+            <th>
+                Capactity
+            </th>
+            <th>
+                When Made
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Venue)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.VenueCost)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.WhenMade)
+            </td>
+        </tr>
+    </table>
+        }
+        else 
+        {
+            <p>No venue added</p>
+        }
+
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <h4>Event Details</h4>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    Event Title
+                    @*@Html.DisplayNameFor(model => model.Title)*@
+                </th>
+                <th>
+                    Event Date
+                    @*@Html.DisplayNameFor(model => model.Date)*@
+                </th>
+                <th>
+                    Event Duration
+                    @*@Html.DisplayNameFor(model => model.Duration)*@
+                </th>
+                <th>
+                    Event TypeId
+                    @*@Html.DisplayNameFor(model => model.TypeId)*@
+                </th>
+                <th>
+                    Guest Count
+                </th>
+                <th>
+                    Staff Count
+                </th>
+                <th>
+                    Enough Staff Assigned
+                </th>
+                <th>
+                    First Aider
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Date)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Duration)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.TypeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.GuestCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.StaffCount)
+                </td>
+                <td>
+                    @if (Model.EnoughStaffBool == true)
+                    {
+                        <font color="red">
+                            @Html.DisplayFor(model => model.EnoughStaff)
+                        </font>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(model => model.EnoughStaff)
+                    }
+                </td>
+                <td>
+                    @if (Model.FirstAiderBool == true)
+                    {
+                        <font color="red">
+                            @Html.DisplayFor(model => model.FirstAider)
+                        </font>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(model => model.FirstAider)
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-12">
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <h4>Guest Details</h4>
+        @if (Model.Guests.Any())
+        {
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>
+                        Customer Name
+                        @*@Html.DisplayNameFor(model => model.Customer)*@
+                    </th>
+                    <th>
+                        Customer Email Address
+                        @*@Html.DisplayNameFor(model => model.Email)*@
+                    </th>
+                    <th>
+                        Guest Atteneded
+                        @*@Html.DisplayNameFor(model => model.Attended)*@
+                    </th>
+                </tr>
+                @foreach (var item in Model.Guests)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Attended)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No guests</p>
+        }
+
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <h4>Staff Details</h4>
+        @if (Model.Staff.Any())
+        {
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Staff Full Name
+                        @*@Html.DisplayNameFor(model => model.Customer)*@
+                    </th>
+                    <th>
+                        First Aider
+                        @*@Html.DisplayNameFor(model => model.Email)*@
+                    </th>
+                    <th>
+                        Staff Count
+                        @*@Html.DisplayNameFor(model => model.Title)*@
+                    </th>
+                    <th>
+                        Remove Staff
+                    </th>
+                </tr>
+                @foreach (var item in Model.Staff)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FirstAider)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.StaffCount)
+                        </td>
+                        <td>
+                            <a asp-action="Index">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No guests</p>
+        }
+
+    </div>
+    <div class="col-md-12">
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
