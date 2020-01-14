@@ -26,7 +26,7 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="FirstAider" /> @Html.DisplayNameFor(model => model.FirstAider)
+                        <input onclick="UpdateFirstAider(@Model.Id)" asp-for="FirstAider" /> @Html.DisplayNameFor(model => model.FirstAider)
                     </label>
                 </div>
             </div>
@@ -41,6 +41,23 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    function UpdateFirstAider(Id) {
+        $.ajax({
+            url: "http://localhost:22263/Staffs/UpdateFirstAider/" + Id,
+            type: "POST",
+            crossDomain: false,
+            success: function () {
+                alert("Worked");
+            },
+            error: function () {
+                alert("Didn't work");
+            }
+        });
+    }
+</script>
 }

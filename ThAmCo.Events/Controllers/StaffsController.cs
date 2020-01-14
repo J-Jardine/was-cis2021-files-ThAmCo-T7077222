@@ -172,5 +172,22 @@ namespace ThAmCo.Events.Controllers
         {
             return _context.Staff.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateFirstAider(int? id)
+        {
+            var Staffs = await _context.Staff.FindAsync(id);
+            if (Staffs.FirstAider == true)
+            {
+                Staffs.FirstAider = false;
+            }
+            else
+            {
+                Staffs.FirstAider = true;
+            }
+            _context.Update(Staffs);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
     }
 }

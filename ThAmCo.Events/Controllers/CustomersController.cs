@@ -19,7 +19,6 @@ namespace ThAmCo.Events.Controllers
         }
 
         // GET: Customers
-        //Test commit
         public async Task<IActionResult> Index()
         {
             var customerDb = _context.Customers;
